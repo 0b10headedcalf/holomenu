@@ -13,7 +13,7 @@
  * Without keys we return deterministic local answers — demo never dies.
  */
 
-type ChatMessage = { role: "system" | "user" | "assistant"; content: string };
+type ChatMessage = { role: "system" | "user" | "assistant"; content: string | Array<{ type: "text"; text: string } | { type: "image_url"; image_url: { url: string } }> };
 
 export async function metaChat(messages: ChatMessage[]): Promise<string | null> {
   const key = process.env.META_API_KEY;

@@ -1,7 +1,17 @@
 @import "tailwindcss";
 
-body {
-  background: #09090b;
-  color: #fafafa;
-  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+@theme {
+  --color-blue-600: #0866ff;
+  --color-blue-700: #0554d6;
+  --color-blue-50: #edf5ff;
 }
+
+:root { color-scheme: light; }
+body { margin: 0; background: #faf9f6; color: #1c2b33; font-family: Arial, Helvetica, sans-serif; -webkit-font-smoothing: antialiased; }
+::selection { background: #dbeafe; color: #1647a3; }
+button, a, input, select { -webkit-tap-highlight-color: transparent; }
+button, a { transition: background-color .18s, border-color .18s, color .18s; }
+button { cursor: pointer; }
+:focus-visible { outline: 3px solid #0866ff; outline-offset: 4px; }
+input::placeholder { color: #7b8790; }
+model-viewer { --poster-color: #f0f3f5; }

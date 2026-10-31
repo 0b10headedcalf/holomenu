@@ -16,7 +16,7 @@ export type TruthScore = {
 export function computeTruthScore(dish: Dish): TruthScore {
   const photoCount = dish.evidence.length;
   const evidenceBonus = Math.min(photoCount * 3, 15); // more photos, capped
-  const freshestDaysAgo = Math.min(...dish.evidence.map((e) => e.daysAgo));
+  const freshestDaysAgo = photoCount ? Math.min(...dish.evidence.map((e) => e.daysAgo)) : 0;
   const freshnessPenalty = freshestDaysAgo > 10 ? 8 : freshestDaysAgo > 5 ? 3 : 0;
 
   const overall = Math.round(
@@ -26,7 +26,7 @@ export function computeTruthScore(dish: Dish): TruthScore {
       evidenceBonus -
       freshnessPenalty
   );
-  const clamped = Math.max(5, Math.min(98, overall));
+  const clamped = Math.max(5, Math.min(photoCount < 3 ? 64 : photoCount < 4 ? 84 : 98, overall));
 
   const label: TruthScore["label"] =
     clamped >= 85
@@ -41,7 +41,7 @@ export function computeTruthScore(dish: Dish): TruthScore {
     photoCount,
     freshestDaysAgo,
     explanation:
-      `Built from ${photoCount} real customer photos (freshest ${freshestDaysAgo}d ago). ` +
+      `Demo score from ${photoCount} curated sample photos and manually assigned agreement values (freshest ${freshestDaysAgo}d ago). ` +
       `Portion agreement ${dish.portionAgreement}%, presentation ${dish.presentationAgreement}%. ` +
       dish.uncertainty,
   };

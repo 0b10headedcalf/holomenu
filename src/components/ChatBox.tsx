@@ -29,28 +29,28 @@ export default function ChatBox({ dishId, dishName }: { dishId: string; dishName
   }
 
   return (
-    <section className="rounded-2xl border border-zinc-800 bg-zinc-900/60 p-5">
-      <p className="flex items-center gap-2 text-sm font-semibold text-zinc-100">
-        <Sparkles className="h-4 w-4 text-amber-400" /> Ask about {dishName}
+    <section className="rounded-2xl border border-slate-200 bg-white p-5">
+      <p className="flex items-center gap-2 text-sm font-semibold text-slate-900">
+        <Sparkles className="h-4 w-4 text-blue-600" /> Ask about {dishName}
       </p>
       <div className="mt-3 flex flex-wrap gap-2">
         {PRESETS.map((p) => (
-          <button key={p} onClick={() => ask(p)} disabled={busy} className="rounded-full border border-zinc-700 px-3 py-1.5 text-xs text-zinc-300 hover:border-amber-400 hover:text-amber-300 disabled:opacity-50">
+          <button key={p} onClick={() => ask(p)} disabled={busy} className="rounded-full border border-slate-200 px-3 py-1.5 text-xs text-slate-600 hover:border-blue-500 hover:text-blue-600 disabled:opacity-50">
             {p}
           </button>
         ))}
       </div>
       <form className="mt-3 flex gap-2" onSubmit={(e) => { e.preventDefault(); ask(q); }}>
-        <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Ask about portion, ingredients, scale…" className="flex-1 rounded-xl border border-zinc-700 bg-zinc-950 px-3 py-2.5 text-sm text-zinc-100 placeholder:text-zinc-500 focus:border-amber-400 focus:outline-none" />
-        <button disabled={busy} className="flex items-center gap-1 rounded-xl bg-amber-400 px-4 py-2.5 text-sm font-semibold text-zinc-950 hover:bg-amber-300 disabled:opacity-50">
+        <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Ask about portion, ingredients, scale…" className="flex-1 rounded-xl border border-slate-200 bg-[#faf9f6] px-3 py-2.5 text-sm text-slate-900 placeholder:text-slate-500 focus:border-blue-500 focus:outline-none" />
+        <button disabled={busy} className="flex items-center gap-1 rounded-xl bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white hover:bg-blue-700 disabled:opacity-50">
           <Send className="h-4 w-4" /> {busy ? "…" : "Ask"}
         </button>
       </form>
       <div className="mt-4 space-y-3">
         {log.map((m, i) => (
-          <div key={i} className="rounded-xl bg-zinc-950/70 p-3">
-            <p className="text-xs font-medium text-amber-300">{m.q}</p>
-            <p className="mt-1 text-sm leading-6 text-zinc-200">{m.a}</p>
+          <div key={i} className="rounded-xl bg-[#faf9f6]/70 p-3">
+            <p className="text-xs font-medium text-blue-600">{m.q}</p>
+            <p className="mt-1 text-sm leading-6 text-slate-700">{m.a}</p>
             {m.source && <p className="mt-1 text-[11px] text-zinc-600">via {m.source}</p>}
           </div>
         ))}

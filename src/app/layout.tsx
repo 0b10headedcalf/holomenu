@@ -1,10 +1,7 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import Link from "next/link";
 import "./globals.css";
 
-const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
-const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "HoloMenu — See What You'll Actually Get",
@@ -13,28 +10,28 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
-      <body className="min-h-full bg-zinc-950 text-zinc-50">
-        <header className="sticky top-0 z-20 border-b border-zinc-800/80 bg-zinc-950/90 backdrop-blur">
-          <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6">
+    <html lang="en" className="h-full antialiased">
+      <body className="min-h-full bg-[#faf9f6] text-slate-900">
+        <header className="sticky top-0 z-20 border-b border-slate-200 bg-[#faf9f6]/95 backdrop-blur">
+          <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-5 sm:px-6">
             <Link href="/" className="flex items-center gap-2">
-              <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-amber-400 text-sm font-black text-zinc-950">H</span>
+              <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-600 text-sm font-medium text-white">H</span>
               <span className="leading-tight">
                 <span className="block font-bold tracking-tight">HoloMenu</span>
-                <span className="hidden text-[11px] text-zinc-500 sm:block">See what you&apos;ll actually get</span>
+                <span className="hidden text-[11px] text-slate-500 sm:block">See what you&apos;ll actually get</span>
               </span>
             </Link>
             <nav className="flex items-center gap-1 text-sm">
-              <Link href="/" className="rounded-lg px-3 py-2 text-zinc-300 hover:bg-zinc-800 hover:text-white">Scan</Link>
-              <Link href="/compare?a=ramen&b=pizza" className="rounded-lg px-3 py-2 text-zinc-300 hover:bg-zinc-800 hover:text-white">Compare</Link>
-              <Link href="/glasses" className="rounded-lg bg-zinc-800 px-3 py-2 font-medium text-amber-300 hover:bg-zinc-700">Glasses view</Link>
+              <Link href="/" className="rounded-lg px-3 py-2 text-slate-600 hover:bg-slate-100 hover:text-blue-600">Menu</Link>
+              <Link href="/compare?a=ramen&b=pizza" className="rounded-lg px-3 py-2 text-slate-600 hover:bg-slate-100 hover:text-blue-600">Compare</Link>
+              <Link href="/glasses" className="rounded-lg bg-blue-50 px-3 py-2 font-medium text-blue-600 hover:bg-blue-100">Glasses view</Link>
             </nav>
           </div>
         </header>
         <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-6 sm:px-6 sm:py-10">{children}</main>
-        <footer className="border-t border-zinc-800 py-6">
-          <p className="mx-auto max-w-6xl px-4 text-xs leading-5 text-zinc-500 sm:px-6">
-            HoloMenu — Meta Global AI Developer Hackathon (Indie track). Built with Muse Spark + SAM 3.1 via Meta Model API, GPU reconstruction on Modal, browser spatial rendering via model-viewer. 3D previews are reconstructions from real photos, scored for honesty — not promo renders.
+        <footer className="border-t border-slate-200 py-6">
+          <p className="mx-auto max-w-6xl px-4 text-xs leading-5 text-slate-500 sm:px-6">
+            HoloMenu — Meta Global AI Developer Hackathon (Indie track). Demo previews use stylized 3D assets and curated sample evidence. Live AI features require configured services. Confirm portions, ingredients, and allergens with the restaurant.
           </p>
         </footer>
       </body>
